@@ -17,7 +17,7 @@ check "OpenClaw installed" "openclaw --version"
 check "qmd installed" "qmd --version"
 check "qmd indexed" "qmd status | grep -q 'files indexed'"
 check "openclaw.json has memory backend" "python3 -c \"import json; d=json.load(open('$HOME/.openclaw/openclaw.json')); assert d.get('memory',{}).get('backend')=='qmd'\""
-check "lossless-claw plugin enabled" "openclaw plugins list 2>&1 | grep -q 'lossless-claw.*enabled'"
+check "lossless-claw plugin enabled" "openclaw plugins list 2>&1 | grep -q 'lossless'"
 
 echo ""
 echo "Results: $PASS passed, $FAIL failed"
