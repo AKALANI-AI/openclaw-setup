@@ -36,6 +36,35 @@ openclaw --version
 - qmd collections: `memory` + `workspace`
 - lossless-claw plugin enabled
 
+## 3 Ways to Deploy to a Customer
+
+### Option 1 — Customer Runs It Themselves
+Send the customer this one command. They paste it in their terminal and it sets up everything automatically:
+```bash
+curl -fsSL https://raw.githubusercontent.com/AKALANI-AI/openclaw-setup/main/install.sh | bash
+```
+
+### Option 2 — You SSH In and Run It Remotely
+You run this from your own machine. Replace `user` and `your-vps` with the customer's SSH credentials:
+```bash
+ssh user@your-vps "curl -fsSL https://raw.githubusercontent.com/AKALANI-AI/openclaw-setup/main/install.sh | bash"
+```
+For servers where `curl` may not be available:
+```bash
+ssh user@your-vps "wget -qO- https://raw.githubusercontent.com/AKALANI-AI/openclaw-setup/main/install.sh | bash"
+```
+
+### Option 3 — Spawn a Sub-Agent with SSH Credentials (Fully Hands-Off)
+The most powerful option. Tell your OpenClaw agent:
+```
+Set up OpenClaw for customer X. SSH into user@their-vps-ip, 
+download and run https://raw.githubusercontent.com/AKALANI-AI/openclaw-setup/main/install.sh,
+then verify everything is working and report back.
+```
+The sub-agent handles the entire process while you do something else. It will ping you when done.
+
+---
+
 ## Remote VPS Deploy (via SSH)
 
 Run the setup directly on a remote server over SSH:
